@@ -1,0 +1,37 @@
+name: php
+icon: php
+title: PHP
+
+services:
+- name: php
+  title: PHP
+  service: php
+  required: true
+  volumes:
+  - name: files
+    size: 50
+  links:
+  - name: db
+    service: mariadb
+
+- name: nginx
+  title: Nginx
+  service: nginx
+  required: true
+  containers:
+  - name: nginx
+    env:
+    - name: NGINX_VHOST_PRESET
+      value: php
+  links:
+  - name: backend
+    service: php
+
+- name: mariadb
+  title: MariaDB
+  service: mariadb
+  required: true  
+  volumes:
+  - name: mysql-data
+    size: 20
+
