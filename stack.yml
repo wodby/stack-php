@@ -32,6 +32,27 @@ services:
   service: mariadb
   required: true  
   volumes:
-  - name: mysql-data
+  - name: data
     size: 20
 
+- name: httpd
+  title: Apache HTTP server
+  service: httpd
+  disabled: true
+  containers:
+  - name: httpd
+    env:
+    - name: APACHE_VHOST_PRESET
+      value: php
+  links:
+  - name: backend
+    service: php
+
+- name: postgres
+  title: PostgreSQL
+  service: postgres
+  disabled: true  
+  volumes:
+  - name: data
+    size: 20
+    
