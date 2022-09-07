@@ -1,4 +1,4 @@
-name: php-nginx
+name: php
 icon: php
 title: PHP
 
@@ -16,7 +16,7 @@ services:
 
 - name: nginx
   title: Nginx
-  service: nginx-php
+  service: php-nginx
   required: true
   containers:
   - name: nginx
@@ -37,7 +37,7 @@ services:
 
 - name: httpd
   title: Apache HTTP server
-  service: httpd-php
+  service: php-httpd
   disabled: true
   containers:
   - name: httpd
