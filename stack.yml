@@ -7,9 +7,6 @@ services:
   title: PHP
   service: php
   required: true
-  volumes:
-  - name: files
-    size: 50
   links:
   - name: db
     service: mariadb
