@@ -52,4 +52,13 @@ services:
   volumes:
   - name: data
     size: 20
-    
+
+- name: valkey
+  title: Valkey
+  service: valkey
+  disabled: true  
+
+- name: gotenberg
+  title: Gotenger
+  service: gotenberg
+  disabled: true  
