@@ -29,7 +29,6 @@ services:
 - name: mariadb
   title: MariaDB
   service: mariadb
-  required: true  
   volumes:
   - name: data
     size: 20
