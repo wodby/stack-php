@@ -17,11 +17,6 @@ services:
   title: Nginx
   service: php-nginx
   required: true
-  containers:
-  - name: nginx
-    env:
-    - name: NGINX_VHOST_PRESET
-      value: php
   links:
   - name: backend
     service: php
@@ -37,11 +32,6 @@ services:
   title: Apache HTTP server
   service: php-httpd
   disabled: true
-  containers:
-  - name: httpd
-    env:
-    - name: APACHE_VHOST_PRESET
-      value: php
   links:
   - name: backend
     service: php
