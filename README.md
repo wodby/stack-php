@@ -1,11 +1,32 @@
-# PHP stack for Wodby
+# PHP application stack for Kubernetes on Wodby
 
-Deploy PHP on Kubernetes with Wodby. This repository contains the stack
-manifests used by the public PHP stack in the Wodby catalog.
+Deploy PHP applications on Kubernetes with Wodby.
 
-- [PHP stack in the Wodby catalog](https://wodby.com/stacks/php)
+This repository defines the Wodby stack manifests and default service
+composition for PHP.
+
+- [Browse Wodby application stacks](https://wodby.com/stacks)
 - [Wodby stack documentation](https://wodby.com/docs/2.0/stacks/)
 - [Stack manifest reference](https://wodby.com/docs/2.0/stacks/template/)
+
+## Start from a template
+
+Use one of the compatible source templates exposed by this stack's services to
+start with Wodby CI build configuration:
+
+- [Composer boilerplate](https://github.com/wodby/php-package-boilerplate)
+
+## Service definitions
+
+- [PHP service](https://github.com/wodby/service-php)
+- [Nginx (PHP) service](https://github.com/wodby/service-php-nginx)
+- [MariaDB service](https://github.com/wodby/service-mariadb)
+- [Apache HTTP server (PHP) service](https://github.com/wodby/service-php-httpd)
+- [PostgreSQL service](https://github.com/wodby/service-postgres)
+- [Valkey service](https://github.com/wodby/service-valkey)
+- [Mailpit service](https://github.com/wodby/service-mailpit)
+- [OpenSMTPD service](https://github.com/wodby/service-opensmtpd)
+- [Gotenberg service](https://github.com/wodby/service-gotenberg)
 
 ## What's included
 
@@ -25,39 +46,29 @@ Enabled optional services are selected by default but can be excluded when an
 app is created. Disabled optional services are available but not selected by
 default. Required services cannot be excluded.
 
-## Use this stack
+## Deploy this stack
 
-The simplest path is to add the public stack from the Wodby catalog. Review the
-enabled services, versions, storage sizes, links, and other defaults when
-creating your app.
+Start from [Composer boilerplate](https://github.com/wodby/php-package-boilerplate), or connect your own compatible source
+repository.
 
-To maintain your own version of this stack:
+Review service versions, storage, links, and optional components when creating
+the application. The same stack can be reused across development, staging, and
+production environments.
+
+## Maintain a custom version
 
 1. Fork this repository.
 2. Edit the stack manifest.
-3. Import the repository as a
-   [Git-backed stack](https://wodby.com/docs/2.0/stacks/create/#create-a-git-backed-stack).
+3. Import the repository as a [Git-backed stack](https://wodby.com/docs/2.0/stacks/create/#create-a-git-backed-stack).
 
-Wodby imports the manifest from the selected Git branch or tag and creates a new
-stack revision when the Git-backed stack is updated.
+When replacing or renaming a stack service, update every related link target
+and derivative reference. Stack-local names and referenced service names are
+distinct identifiers.
 
-## Customize the stack
-
-Common changes include selecting different service versions, enabling or
-disabling optional components, changing persistent volume sizes, adjusting
-stack-level environment and workload overrides, or replacing one linked service
-with another compatible service.
-
-When replacing or renaming a stack service, update every corresponding
-`services[].links` target and derivative reference. Stack-local names and
-referenced service names are distinct identifiers and do not need to match.
-
-Validate customized manifests with the Wodby CLI before importing them:
+Validate the manifests with:
 
 ```bash
 wodby stack validate-manifest stack.yml --org <org-id>
 ```
 
-See the [stack manifest reference](https://wodby.com/docs/2.0/stacks/template/)
-for every supported field and the [managed services
-index](https://github.com/wodby/services) for available service references.
+See the [stack manifest reference](https://wodby.com/docs/2.0/stacks/template/) and the [managed services index](https://github.com/wodby/services).
