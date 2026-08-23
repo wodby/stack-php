@@ -5,13 +5,18 @@ Deploy PHP applications on Kubernetes with Wodby.
 This repository defines the Wodby stack manifests and default service
 composition for PHP.
 
+<!-- wodby:generated:start -->
+
+## Stack contract
+
+- [PHP stack on Wodby](https://wodby.com/stacks/php)
 - [Browse Wodby application stacks](https://wodby.com/stacks)
 - [Wodby stack documentation](https://wodby.com/docs/2.0/stacks/)
 - [Stack manifest reference](https://wodby.com/docs/2.0/stacks/template/)
 
-## Start from a template
+## Start from a boilerplate
 
-Use one of the compatible source templates exposed by this stack's services to
+Use one of the compatible boilerplates exposed by this stack's services to
 start with Wodby CI build configuration:
 
 - [Composer boilerplate](https://github.com/wodby/php-package-boilerplate)
@@ -33,18 +38,26 @@ start with Wodby CI build configuration:
 | Component / service | Default configuration |
 | --- | --- |
 | PHP<br>`php` | required; enabled by default; links: `db` → `mariadb`, `sendmail` → `mailpit` |
-| Nginx<br>`php-nginx` | required; enabled by default; links: `backend` → `php` |
+| Nginx<br>`nginx` | required; enabled by default; links: `backend` → `php` |
 | MariaDB<br>`mariadb` | optional; enabled by default; volumes: `data` 20 GB |
-| Apache HTTP server (`httpd`)<br>`php-httpd` | optional; disabled by default; links: `backend` → `php` |
-| PostgreSQL (`postgres`)<br>`postgres` | optional; disabled by default; volumes: `data` 20 GB |
+| Apache HTTP server<br>`httpd` | optional; disabled by default; links: `backend` → `php` |
+| PostgreSQL<br>`postgres` | optional; disabled by default; volumes: `data` 20 GB |
 | Valkey<br>`valkey` | optional; disabled by default |
 | Mailpit<br>`mailpit` | optional; enabled by default |
 | OpenSMTPD<br>`opensmtpd` | optional; disabled by default |
-| Gotenger (`gotenberg`)<br>`gotenberg` | optional; disabled by default |
+| Gotenger<br>`gotenberg` | optional; disabled by default |
 
 Enabled optional services are selected by default but can be excluded when an
 app is created. Disabled optional services are available but not selected by
 default. Required services cannot be excluded.
+
+## Validate the stack manifest
+
+```bash
+wodby stack validate-manifest stack.yml --org <org-id>
+```
+
+<!-- wodby:generated:end -->
 
 ## Deploy this stack
 
@@ -64,11 +77,3 @@ production environments.
 When replacing or renaming a stack service, update every related link target
 and derivative reference. Stack-local names and referenced service names are
 distinct identifiers.
-
-Validate the manifests with:
-
-```bash
-wodby stack validate-manifest stack.yml --org <org-id>
-```
-
-See the [stack manifest reference](https://wodby.com/docs/2.0/stacks/template/) and the [managed services index](https://github.com/wodby/services).
