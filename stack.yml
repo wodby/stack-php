@@ -59,6 +59,6 @@ services:
   service: opensmtpd
 
 - name: gotenberg
-  title: Gotenger
+  title: Gotenberg
   service: gotenberg
   disabled: true  

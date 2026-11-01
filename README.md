@@ -45,7 +45,7 @@ start with Wodby CI build configuration:
 | Valkey<br>`valkey` | optional; disabled by default |
 | Mailpit<br>`mailpit` | optional; enabled by default |
 | OpenSMTPD<br>`opensmtpd` | optional; disabled by default |
-| Gotenger<br>`gotenberg` | optional; disabled by default |
+| Gotenberg<br>`gotenberg` | optional; disabled by default |
 
 Enabled optional services are selected by default but can be excluded when an
 app is created. Disabled optional services are available but not selected by
