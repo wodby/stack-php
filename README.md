@@ -33,12 +33,13 @@ start with Wodby CI build configuration:
 - [Mailpit service](https://github.com/wodby/service-mailpit)
 - [OpenSMTPD service](https://github.com/wodby/service-opensmtpd)
 - [Gotenberg service](https://github.com/wodby/service-gotenberg)
+- [OpenTelemetry Collector service](https://github.com/wodby/service-opentelemetry-collector)
 
 ## What's included
 
 | Component / service | Default configuration |
 | --- | --- |
-| PHP<br>`php` | required; enabled by default; links: `db` → `mariadb`, `sendmail` → `mailpit` |
+| PHP<br>`php` | required; enabled by default; links: `db` → `mariadb`, `sendmail` → `mailpit`, `otel` → `otel-collector` |
 | Nginx<br>`nginx` | required; enabled by default; links: `backend` → `php` |
 | MariaDB<br>`mariadb` | optional; enabled by default; volumes: `data` 20 GB |
 | Apache HTTP server<br>`httpd` | optional; disabled by default; links: `backend` → `php` |
@@ -47,6 +48,7 @@ start with Wodby CI build configuration:
 | Mailpit<br>`mailpit` | optional; enabled by default |
 | OpenSMTPD<br>`opensmtpd` | optional; disabled by default |
 | Gotenberg<br>`gotenberg` | optional; disabled by default |
+| OpenTelemetry Collector<br>`otel-collector` | optional; disabled by default |
 
 Enabled optional services are selected by default but can be excluded when an
 app is created. Disabled optional services are available but not selected by
